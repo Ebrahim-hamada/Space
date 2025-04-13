@@ -22,21 +22,21 @@ const Navbar = () => {
   return (
     <>
       {/* Navbar Header */}
-      <nav className="flex items-center justify-between px-6 md:px-12 pt-6 fixed top-0 left-0 w-full z-50">
+      <nav className="flex items-center justify-between pt-6 px-6 md:px-0 fixed top-0 left-0 w-full z-50">
         {/* Logo */}
-        <div className="w-12 h-12 relative flex items-center justify-center">
+        <div className="w-12 h-12 relative md:px-12 flex items-center justify-center">
           <div className="absolute w-8 h-8 bg-black rounded-full flex items-center justify-center">
             <img src={star} alt="logo" className="w-6 h-6" />
           </div>
         </div>
         {/* Line - Desktop Only */}
-        <div className="hidden md:block flex-1 mx-1 relative translate-x-5 z-50">
-          <div className="h-px bg-gray-600 absolute left-10 right-0  z-10"></div>
+        <div className="hidden md:block flex-1 mx-0 relative translate-x-5 z-50">
+          <div className="h-px bg-gray-600 absolute left-0 right-0 z-20"></div>
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex bg-opacity-20 backdrop-blur-md px-12 py-6">
-          <ul className="flex space-x-12">
+        <div className="hidden md:flex lg:bg-transparent bg-[#282B34]/90 backdrop-blur-md px-12 py-6 justify-end">
+          <ul className="flex ps-20 space-x-12">
             {navItems.map((item) => (
               <li key={item.id}>
                 <NavLink to={item.path} className={navLinkStyle}>
