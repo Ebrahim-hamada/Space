@@ -15,8 +15,8 @@ const Navbar = () => {
   ];
 
   const navLinkStyle = ({ isActive }) =>
-    `tracking-widest text-sm font-light cursor-pointer whitespace-nowrap ${
-      isActive ? "text-white border-b-2 border-white pb-1" : "text-gray-300"
+    `tracking-widest text-sm font-light cursor-pointer whitespace-nowrap text-white ${
+      isActive ? "text-white border-b-2 border-white pb-1 " : "text-gray-300"
     }`;
 
   return (
@@ -30,8 +30,8 @@ const Navbar = () => {
           </div>
         </div>
         {/* Line - Desktop Only */}
-        <div className="hidden md:block flex-1 mx-0 relative translate-x-5 z-50">
-          <div className="h-px bg-gray-600 absolute left-0 right-0 z-20"></div>
+        <div className="hidden md:block flex-1 mx-0 relative translate-x-15 z-50">
+          <div className="h-px bg-gray-600 absolute left-0 right-0  z-20"></div>
         </div>
 
         {/* Desktop Navigation */}
