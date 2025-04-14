@@ -90,11 +90,11 @@ const Crew = () => {
               fade ? "opacity-0" : "opacity-100"
             }`}
           >
-            <div className="relative w-full h-full flex justify-center lg:justify-start max-h-[900px]  overflow-visible">
+            <div className="relative w-full h-full flex justify-center lg:justify-start lg:right-25 max-h-[900px]  overflow-visible">
               <img
                 src={currentMember.imageUrl}
                 alt={currentMember.name}
-                className="object-contain object-bottom h-full  w-full md:w-[50%] lg:w-full floating-img"
+                className="object-contain object-bottom h-full  w-full md:w-[50%] lg:w-[90%] floating-img"
                 style={{
                   clipPath: "inset(0 0 -20% 0)",
                   transformOrigin: "bottom center",
