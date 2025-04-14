@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import desktopBackground from "../../assets/image/crew/background-crew-desktop.jpg";
 import tabletBackground from "../../assets/image/crew/background-crew-tablet.jpg";
 import mobileBackground from "../../assets/image/crew/background-crew-mobile.jpg";
@@ -33,29 +33,29 @@ const Crew = () => {
       role: "COMMANDER",
       name: "DOUGLAS HURLEY",
       bio: "Douglas Gerald Hurley is an American engineer, former Marine Corps pilot and former NASA astronaut. He launched into space for the third time as commander of Crew Dragon Demo-2, the first crewed test flight of the SpaceX Crew Dragon.",
-      imageUrl: DOUGLAS
+      imageUrl: DOUGLAS,
     },
     {
       id: 1,
       role: "MISSION SPECIALIST",
       name: "MARK SHUTTLEWORTH",
       bio: "Mark Richard Shuttleworth is the founder and CEO of Canonical, the company behind the Linux-based Ubuntu operating system. Shuttleworth became the first South African to travel to space as a space tourist.",
-      imageUrl: MARK
+      imageUrl: MARK,
     },
     {
       id: 2,
       role: "PILOT",
       name: "VICTOR GLOVER",
       bio: "Pilot on the first operational flight of the SpaceX Crew Dragon to the International Space Station. Glover is a commander in the U.S. Navy where he pilots an F/A-18. He was a crew member of Expedition 64, and served as a station systems flight engineer.",
-      imageUrl: VICTOR
+      imageUrl: VICTOR,
     },
     {
       id: 3,
       role: "FLIGHT ENGINEER",
       name: "ANOUSHEH ANSARI",
       bio: "Anousheh Ansari is an Iranian American engineer and co-founder of Prodea Systems. Ansari was the fourth self-funded space tourist, the first self-funded woman to fly to the ISS, and the first Iranian in space.",
-      imageUrl: ANOUSHEH
-    }
+      imageUrl: ANOUSHEH,
+    },
   ];
 
   const handleChangeMember = (index) => {
@@ -71,73 +71,84 @@ const Crew = () => {
 
   return (
     <div
-      className="min-h-screen text-white bg-cover bg-center bg-no-repeat"
-      style={{
-        backgroundImage: `url(${backgroundImage})`,
-      }}
+      className="min-h-screen text-center lg:text-start text-white bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: `url(${backgroundImage})` }}
     >
-      <div className="min-h-screen text-white overflow-hidden">
-        <div className="w-[80%] mx-auto px-6 min-h-[700px] flex flex-col">
-          <header className="pt-20 pb-6">
-            <div className="flex items-center">
-              <span className="text-gray-500 font-bold mr-4">02</span>
-              <h1 className="text-xl md:text-2xl tracking-widest">MEET YOUR CREW</h1>
-            </div>
-          </header>
+      <div className="container mx-auto px-6 py-8 max-w-7xl min-h-screen flex flex-col">
+        <div className="mt-20">
+          <div className="flex justify-center lg:justify-start items-center space-x-4">
+            <span className="text-[#4D4D56] font-bold text-2xl">02</span>
+            <h1 className="text-xl tracking-[1.75px] lg:text-2xl lg:tracking-[4.75px] text-white">
+              MEET YOUR CREW
+            </h1>
+          </div>
+        </div>
 
-          <main className="flex-1 flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="md:w-1/2 z-10">
+        <main className="flex-1 flex flex-col lg:flex-row items-center lg:items-end justify-between gap-8">
+          <div
+            className={`w-full lg:w-[35%] order-last lg:order-last h-full flex items-center justify-center transition-opacity duration-300 ${
+              fade ? "opacity-0" : "opacity-100"
+            }`}
+          >
+            <div className="relative w-full h-full flex justify-center lg:justify-start max-h-[900px]  overflow-visible">
+              <img
+                src={currentMember.imageUrl}
+                alt={currentMember.name}
+                className="object-contain object-bottom h-full  w-full md:w-[50%] lg:w-full floating-img"
+                style={{
+                  clipPath: "inset(0 0 -20% 0)",
+                  transformOrigin: "bottom center",
+                  position: "relative",
+                  zIndex: 1,
+                }}
+              />
               <div
-                className={`max-w-xl transition-opacity duration-300 ${
-                  fade ? "opacity-0" : "opacity-100"
-                }`}
-              >
-                <h2 className="text-gray-400 text-xl md:text-2xl mb-2">
-                  {currentMember.role}
-                </h2>
-                <h3 className="text-4xl md:text-5xl font-bold mb-6">
-                  {currentMember.name}
-                </h3>
-                <p className="text-gray-300 mb-12 leading-relaxed">
-                  {currentMember.bio}
-                </p>
-
-                <div className="flex space-x-4 mb-8">
-                  {crewMembers.map((member, index) => (
-                    <button
-                      key={member.id}
-                      onClick={() => handleChangeMember(index)}
-                      className={`w-3 h-3 rounded-full cursor-pointer !rounded-button ${
-                        activeCrewMember === index
-                          ? "bg-white"
-                          : "bg-gray-600 hover:bg-gray-400"
-                      }`}
-                      aria-label={`View ${member.name}`}
-                    />
-                  ))}
-                </div>
-              </div>
+                className="absolute bottom-0 left-0 w-full h-1/3"
+                style={{
+                  background:
+                    "linear-gradient(to top, #0b0e17 0%, transparent 70%)",
+                  zIndex: 2,
+                  pointerEvents: "none",
+                }}
+              />
             </div>
+          </div>
 
+
+          <div className="w-full lg:w-1/2 z-10">
             <div
-              className={`md:w-[30%] h-full flex items-end justify-center transition-opacity duration-300 ${
+              className={`max-w-[500px] mx-auto lg:mx-0 transition-opacity duration-300 mt-10 lg:mb-50 ${
                 fade ? "opacity-0" : "opacity-100"
               }`}
             >
-              <div className="relative w-full h-full max-h-[700px] overflow-visible">
-                <img
-                  src={currentMember.imageUrl}
-                  alt={currentMember.name}
-                  className="object-contain object-bottom h-full w-full floating-img"
-                  style={{
-                    clipPath: "inset(0 0 -20% 0)",
-                    transformOrigin: "bottom center",
-                  }}
-                />
-              </div>
+              <h2 className="text-gray-400 text-xl md:text-2xl mb-2">
+                {currentMember.role}
+              </h2>
+              <h3 className="text-4xl md:text-5xl font-bold mb-6">
+                {currentMember.name}
+              </h3>
+              <p className="text-blue-100 mb-12 leading-relaxed">
+                {currentMember.bio}
+              </p>
             </div>
-          </main>
-        </div>
+
+            {/* نقاط التحكم */}
+            <div className="flex space-x-8 justify-center lg:justify-start my-8 lg:my-0">
+              {crewMembers.map((member, index) => (
+                <button
+                  key={member.id}
+                  onClick={() => handleChangeMember(index)}
+                  className={`w-3 h-3 rounded-full cursor-pointer transition-colors duration-200 ${
+                    activeCrewMember === index
+                      ? "bg-white scale-110"
+                      : "bg-gray-600 hover:bg-gray-400"
+                  }`}
+                  aria-label={`View ${member.name}`}
+                />
+              ))}
+            </div>
+          </div>
+        </main>
       </div>
     </div>
   );

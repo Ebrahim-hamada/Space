@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./Destination.css"
 import desktopBackground from "../../assets/image/destination/background-destination-desktop.jpg";
 import tabletBackground from "../../assets/image/destination/background-destination-tablet.jpg";
 import mobileBackground from "../../assets/image/destination/background-destination-mobile.jpg";
