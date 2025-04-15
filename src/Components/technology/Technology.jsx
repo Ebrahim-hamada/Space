@@ -57,29 +57,30 @@ const Technology = () => {
   return (
     <div
       style={{ backgroundImage: `url(${backgroundImage})` }}
-      className="min-h-screen bg-cover bg-center bg-no-repeat text-white"
+      className="min-h-screen bg-cover bg-center bg-no-repeat text-white flex flex-col items-center justify-center p-6"
     >
-      <div className="p-8">
-        <div className="flex space-x-4 justify-center mb-6">
-          {technologies.map((tech, index) => (
-            <button
-              key={tech.id}
-              onClick={() => handleChangeTechnology(index)}
-              className={`w-12 h-12 rounded-full border ${
-                activeTechnology === index
-                  ? "bg-white text-black"
-                  : "text-white border-white/25"
-              }`}
-            >
-              {index + 1}
-            </button>
-          ))}
-        </div>
-        <div className="text-center">
-          <h2 className="text-3xl mb-4">{currentTech.name}</h2>
-          <p className="max-w-xl mx-auto">{currentTech.description}</p>
-        </div>
+      <div className="flex space-x-4 mb-6">
+        {technologies.map((tech, index) => (
+          <button
+            key={tech.id}
+            onClick={() => handleChangeTechnology(index)}
+            className={`w-12 h-12 rounded-full border ${
+              activeTechnology === index
+                ? "bg-white text-black"
+                : "text-white border-white/25"
+            }`}
+          >
+            {index + 1}
+          </button>
+        ))}
       </div>
+      <img
+        src={currentTech.imageUrl}
+        alt={currentTech.name}
+        className="max-w-md mb-6"
+      />
+      <h2 className="text-3xl mb-4">{currentTech.name}</h2>
+      <p className="max-w-xl text-center">{currentTech.description}</p>
     </div>
   );
 };
