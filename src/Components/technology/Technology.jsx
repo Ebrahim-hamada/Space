@@ -137,6 +137,7 @@ const Technology = () => {
                 </h3>
                 <p className="text-blue-100 mb-12 leading-relaxed">
                   {currentTech.description}
+                  
                 </p>
               </div>
             </div>
