@@ -48,6 +48,10 @@ const Technology = () => {
     },
   ];
 
+  const handleChangeTechnology = (index) => {
+    setActiveTechnology(index);
+  };
+
   const currentTech = technologies[activeTechnology];
 
   return (
@@ -55,10 +59,26 @@ const Technology = () => {
       style={{ backgroundImage: `url(${backgroundImage})` }}
       className="min-h-screen bg-cover bg-center bg-no-repeat text-white"
     >
-      <div>
-        <h1>Technology Page</h1>
-        <h2>{currentTech.name}</h2>
-        <p>{currentTech.description}</p>
+      <div className="p-8">
+        <div className="flex space-x-4 justify-center mb-6">
+          {technologies.map((tech, index) => (
+            <button
+              key={tech.id}
+              onClick={() => handleChangeTechnology(index)}
+              className={`w-12 h-12 rounded-full border ${
+                activeTechnology === index
+                  ? "bg-white text-black"
+                  : "text-white border-white/25"
+              }`}
+            >
+              {index + 1}
+            </button>
+          ))}
+        </div>
+        <div className="text-center">
+          <h2 className="text-3xl mb-4">{currentTech.name}</h2>
+          <p className="max-w-xl mx-auto">{currentTech.description}</p>
+        </div>
       </div>
     </div>
   );
