@@ -15,8 +15,10 @@ const Navbar = () => {
   ];
 
   const navLinkStyle = ({ isActive }) =>
-    `tracking-widest text-sm font-light cursor-pointer whitespace-nowrap text-white ${
-      isActive ? "text-white border-b-2 border-white pb-1 " : "text-gray-300"
+    `tracking-widest text-sm font-light cursor-pointer whitespace-nowrap ${
+      isActive
+        ? "text-white relative after:content-[''] after:absolute after:right-0 after:bottom-0 after:h-full after:w-[4px] after:bg-white md:after:w-auto md:border-b-2 md:border-white md:pb-1"
+        : "text-gray-300"
     }`;
 
   return (
@@ -35,7 +37,7 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex  bg-[#282B34]/50 backdrop-blur-lg px-12 py-6 justify-end">
+        <div className="hidden md:flex bg-[#282B34]/50 backdrop-blur-lg px-12 py-6 justify-end">
           <ul className="flex ps-20 space-x-12">
             {navItems.map((item) => (
               <li key={item.id}>
@@ -54,18 +56,18 @@ const Navbar = () => {
             onClick={toggleMenu}
             className="text-white text-3xl focus:outline-none"
           >
-            {isMenuOpen ? <i className="fa-solid fa-x "></i> : "☰"}
+            {isMenuOpen ? <i class="fa-solid fa-xmark"></i> : "☰"}
           </button>
         </div>
       </nav>
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden fixed top-0 right-0 h-full w-3/4 sm:w-2/5  bg-opacity-70 backdrop-blur-xl transform ${
+        className={`md:hidden fixed top-0 right-0 h-full w-3/4 sm:w-2/5 bg-white/5 backdrop-blur-xl transform ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         } transition-transform duration-300 ease-in-out z-40 pt-24 px-6`}
       >
-        <div className="flex flex-col space-y-6">
+        <div className="flex flex-col space-y-8">
           {navItems.map((item) => (
             <NavLink
               key={item.id}
