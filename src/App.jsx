@@ -4,6 +4,7 @@ import Layout from './Components/Layout/Layout'
 import Home from './Components/home/Home';
 import Destination from './Components/Destination/Destination';
 import Crew from './Components/crew/Crew';
+import Technology from './Components/technology/Technology';
 
 const App = () => {
   const router= createBrowserRouter([
@@ -12,6 +13,7 @@ const App = () => {
         {index:true , element:<Home/>},
         {path:"/destination" , element:<Destination/>},
         {path:"/crew" , element:<Crew/>},
+        {path:"/technology" , element:<Technology/>},
       ]
 
     }

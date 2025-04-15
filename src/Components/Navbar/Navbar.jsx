@@ -35,7 +35,7 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex lg:bg-transparent bg-[#282B34]/90 backdrop-blur-md px-12 py-6 justify-end">
+        <div className="hidden md:flex  bg-[#282B34]/50 backdrop-blur-lg px-12 py-6 justify-end">
           <ul className="flex ps-20 space-x-12">
             {navItems.map((item) => (
               <li key={item.id}>
