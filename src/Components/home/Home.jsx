@@ -31,7 +31,7 @@ const Home = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      {/* Content Wrapper */}
+
       <div className="w-[80%] mx-auto px-6 pt-32 md:pt-70 lg:pt-90 pb-20">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-24">
           <div className="text-center w-[565px] lg:text-left max-w-md lg:max-w-xl">

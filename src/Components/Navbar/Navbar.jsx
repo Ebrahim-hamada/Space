@@ -15,10 +15,10 @@ const Navbar = () => {
   ];
 
   const navLinkStyle = ({ isActive }) =>
-    `tracking-widest text-sm font-light cursor-pointer whitespace-nowrap ${
+    `tracking-widest text-sm font-light cursor-pointer whitespace-nowrap transition-colors ${
       isActive
-        ? "text-white relative after:content-[''] after:absolute after:right-0 after:bottom-0 after:h-full after:w-[4px] after:bg-white md:after:w-auto md:border-b-2 md:border-white md:pb-1"
-        : "text-gray-300"
+        ? "text-white relative after:content-[''] after:absolute after:right-0 after:bottom-0 after:h-full after:w-[4px] after:bg-white md:after:w-auto md:border-b-2 md:border-white md:pb-6"
+        : "text-gray-300 hover:text-white hover:relative hover:after:content-[''] hover:after:absolute hover:after:right-0 hover:after:bottom-0 hover:after:h-full hover:after:w-[4px] hover:after:bg-white md:hover:after:w-auto md:hover:border-b-2 md:hover:border-white md:hover:pb-6"
     }`;
 
   return (
