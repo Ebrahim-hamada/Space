@@ -4,3 +4,7 @@
 body{
     font-family: "Raleway", sans-serif;
 }
+html, body, #root {
+    background: black;
+    min-height: 100vh;
+  }
