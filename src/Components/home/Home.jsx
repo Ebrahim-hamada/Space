@@ -32,7 +32,6 @@ const Home = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-
       <div className="w-[80%] mx-auto px-6 pt-32 md:pt-70 lg:pt-90 pb-20">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-24">
           <div className="text-center w-[565px] lg:text-left max-w-md lg:max-w-xl">
@@ -53,7 +52,7 @@ const Home = () => {
           <div className="flex justify-center lg:justify-end">
             <div className="relative group">
               <button
-                className="relative bg-white text-black font-serif text-xl px-12 py-12 rounded-full w-48 h-48 md:w-56 md:h-56 flex items-center justify-center uppercase tracking-widest"
+                className="relative bg-white text-black font-serif text-xl px-12 py-12 rounded-full w-48 h-48 md:w-56 md:h-56 flex items-center justify-center uppercase tracking-widest transition-all duration-300 hover:shadow-[0_0_0_45px_rgba(255,255,255,0.3)] lg:hover:shadow-[0_0_0_75px_rgba(255,255,255,0.3)]"
                 aria-label="Explore space travel"
               >
                 Explore
