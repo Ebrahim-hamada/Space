@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import desktopBackground from "../../assets/image/home/background-home-desktop.jpg";
 import tabletBackground from "../../assets/image/home/background-home-tablet.jpg";
 import mobileBackground from "../../assets/image/home/background-home-mobile.jpg";
+import { Outlet } from "react-router-dom";
 
 const Home = () => {
   const [backgroundImage, setBackgroundImage] = useState(desktopBackground);
