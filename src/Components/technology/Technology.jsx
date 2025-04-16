@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSwipeable } from "react-swipeable";
 import desktopBackground from "../../assets/image/technology/background-technology-desktop.jpg";
 import tabletBackground from "../../assets/image/technology/background-technology-tablet.jpg";
 import mobileBackground from "../../assets/image/technology/background-technology-mobile.jpg";
@@ -34,21 +35,21 @@ const Technology = () => {
       id: 0,
       name: "LAUNCH VEHICLE",
       description:
-        "A launch vehicle or carrier rocket is a rocket-propelled vehicle used to carry a payload from Earth's surface to space, usually to Earth orbit or beyond. Our WEB-X carrier rocket is the most powerful in operation. Standing 150 meters tall, it's quite an awe-inspiring sight on the launch pad!",
+        "A launch vehicle or carrier rocket is a rocket-propelled vehicle used to carry a payload from Earth's surface to space...",
       imageUrl: VEHICLE,
     },
     {
       id: 1,
       name: "SPACEPORT",
       description:
-        "A spaceport or cosmodrome is a site for launching (or receiving) spacecraft, by analogy to the seaport for ships or airport for aircraft. Based in the famous Cape Canaveral, our spaceport is ideally situated to take advantage of the Earth's rotation for launch.",
+        "A spaceport or cosmodrome is a site for launching (or receiving) spacecraft...",
       imageUrl: SPACEPORT,
     },
     {
       id: 2,
       name: "SPACE CAPSULE",
       description:
-        "A space capsule is an often-crewed spacecraft that uses a blunt-body reentry capsule to reenter the Earth's atmosphere without wings. Our capsule is where you'll spend your time during the flight. It includes a space gym, cinema, and plenty of other activities to keep you entertained.",
+        "A space capsule is an often-crewed spacecraft that uses a blunt-body reentry capsule...",
       imageUrl: CAPSULE,
     },
   ];
@@ -64,9 +65,43 @@ const Technology = () => {
 
   const currentTech = technologies[activeTechnology];
 
+  // ✅ تحديد نوع السوايب حسب عرض الشاشة
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: () => {
+      if (windowWidth <= 1024) {
+        const nextIndex = (activeTechnology + 1) % technologies.length;
+        handleChangeTechnology(nextIndex);
+      }
+    },
+    onSwipedRight: () => {
+      if (windowWidth <= 1024) {
+        const prevIndex =
+          (activeTechnology - 1 + technologies.length) % technologies.length;
+        handleChangeTechnology(prevIndex);
+      }
+    },
+    onSwipedUp: () => {
+      if (windowWidth > 1024) {
+        const nextIndex = (activeTechnology + 1) % technologies.length;
+        handleChangeTechnology(nextIndex);
+      }
+    },
+    onSwipedDown: () => {
+      if (windowWidth > 1024) {
+        const prevIndex =
+          (activeTechnology - 1 + technologies.length) % technologies.length;
+        handleChangeTechnology(prevIndex);
+      }
+    },
+    delta: 30,
+    trackTouch: true,
+    trackMouse: true,
+  });
+
   return (
     <div
-      className="min-h-screen text-center lg:text-start text-white bg-cover bg-center bg-no-repeat"
+      {...swipeHandlers}
+      className="min-h-screen text-center lg:text-start text-white bg-cover bg-center bg-no-repeat touch-pan-y"
       style={{ backgroundImage: `url(${backgroundImage})` }}
     >
       <div className="lg:w-[80%] mx-auto py-8 max-w-7xl min-h-screen flex flex-col">
@@ -93,20 +128,18 @@ const Technology = () => {
                   w-full 
                   ${
                     windowWidth <= 768
-                      ? "h-[300px] object-cover" // Mobile
+                      ? "h-[300px] object-cover"
                       : windowWidth <= 1024
-                      ? "h-[400px] object-cover object-bottom" // Tablet
-                      : "h-[500px] object-contain lg:w-[80%]" // Desktop
+                      ? "h-[400px] object-cover object-bottom"
+                      : "h-[500px] object-contain lg:w-[80%]"
                   }
                 `}
               />
             </div>
           </div>
 
-
           <div className="w-[80%] mx-auto lg:w-[45%] z-10">
             <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12">
-
               <div className="flex lg:flex-col space-x-4 lg:space-x-0 lg:space-y-8">
                 {technologies.map((tech, index) => (
                   <button
@@ -137,7 +170,6 @@ const Technology = () => {
                 </h3>
                 <p className="text-blue-100 mb-12 leading-relaxed">
                   {currentTech.description}
-                  
                 </p>
               </div>
             </div>

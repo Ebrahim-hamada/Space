@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSwipeable } from "react-swipeable";
 import desktopBackground from "../../assets/image/crew/background-crew-desktop.jpg";
 import tabletBackground from "../../assets/image/crew/background-crew-tablet.jpg";
 import mobileBackground from "../../assets/image/crew/background-crew-mobile.jpg";
@@ -67,12 +68,28 @@ const Crew = () => {
     }, 300);
   };
 
+  // swipe handlers
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: () => {
+      const nextIndex = (activeCrewMember + 1) % crewMembers.length;
+      handleChangeMember(nextIndex);
+    },
+    onSwipedRight: () => {
+      const prevIndex =
+        (activeCrewMember - 1 + crewMembers.length) % crewMembers.length;
+      handleChangeMember(prevIndex);
+    },
+    preventScrollOnSwipe: true,
+    trackMouse: true,
+  });
+
   const currentMember = crewMembers[activeCrewMember];
 
   return (
     <div
       className="min-h-screen text-center lg:text-start text-white bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${backgroundImage})` }}
+      {...swipeHandlers}
     >
       <div className="container mx-auto px-6 py-8 max-w-7xl min-h-screen flex flex-col">
         <div className="mt-20">
@@ -113,7 +130,6 @@ const Crew = () => {
               />
             </div>
           </div>
-
 
           <div className="w-full lg:w-1/2 z-10">
             <div

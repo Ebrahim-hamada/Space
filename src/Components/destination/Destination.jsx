@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import "./Destination.css"
+import { useSwipeable } from "react-swipeable";
+import "./Destination.css";
 import desktopBackground from "../../assets/image/destination/background-destination-desktop.jpg";
 import tabletBackground from "../../assets/image/destination/background-destination-tablet.jpg";
 import mobileBackground from "../../assets/image/destination/background-destination-mobile.jpg";
@@ -12,6 +13,8 @@ const Destination = () => {
   const [activeDestination, setActiveDestination] = useState("MOON");
   const [backgroundImage, setBackgroundImage] = useState(desktopBackground);
   const [fade, setFade] = useState(false);
+
+  const destinationKeys = ["MOON", "MARS", "EUROPA", "TITAN"];
 
   useEffect(() => {
     const handleResize = () => {
@@ -64,12 +67,29 @@ const Destination = () => {
   };
 
   const handleDestinationChange = (dest) => {
+    if (dest === activeDestination) return;
     setFade(true);
     setTimeout(() => {
       setActiveDestination(dest);
       setFade(false);
     }, 300);
   };
+
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: () => {
+      const currentIndex = destinationKeys.indexOf(activeDestination);
+      const nextIndex = (currentIndex + 1) % destinationKeys.length;
+      handleDestinationChange(destinationKeys[nextIndex]);
+    },
+    onSwipedRight: () => {
+      const currentIndex = destinationKeys.indexOf(activeDestination);
+      const prevIndex =
+        (currentIndex - 1 + destinationKeys.length) % destinationKeys.length;
+      handleDestinationChange(destinationKeys[prevIndex]);
+    },
+    preventScrollOnSwipe: true,
+    trackMouse: true,
+  });
 
   const currentDest = destinations[activeDestination];
 
@@ -79,12 +99,13 @@ const Destination = () => {
       style={{
         backgroundImage: `url(${backgroundImage})`,
       }}
+      {...swipeHandlers}
     >
       <div className="container text-center lg:text-start mx-auto px-6 py-8 max-w-7xl min-h-screen flex flex-col">
         <div className="mt-20">
           <div className="flex text-center md:text-start items-center space-x-4">
             <span className="text-[#4D4D56] font-bold text-2xl">01</span>
-            <h1 className="text-xl tracking-[1.75px]  lg:text-xl lg:tracking-[4.75px] text-white">
+            <h1 className="text-xl tracking-[1.75px] lg:text-xl lg:tracking-[4.75px] text-white">
               PICK YOUR DESTINATION
             </h1>
           </div>
@@ -105,9 +126,9 @@ const Destination = () => {
             </div>
           </div>
 
-          <div className=" max-w-[445px] text-white">
+          <div className="max-w-[445px] text-white">
             <div className="flex justify-center lg:justify-start space-x-8 mb-8">
-              {Object.keys(destinations).map((dest) => (
+              {destinationKeys.map((dest) => (
                 <button
                   key={dest}
                   onClick={() => handleDestinationChange(dest)}
@@ -136,7 +157,7 @@ const Destination = () => {
               </p>
 
               <div className="pt-8 border-t border-[#383B4B]">
-                <div className="flex  flex-col sm:flex-row justify-center lg:justify-start gap-8 sm:gap-16">
+                <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-8 sm:gap-16">
                   <div>
                     <span className="block text-[#D0D6F9] text-sm tracking-[2.35px] mb-3">
                       AVG. DISTANCE
@@ -162,4 +183,5 @@ const Destination = () => {
     </div>
   );
 };
+
 export default Destination;
