@@ -24,13 +24,8 @@ const Home = () => {
 
   return (
     <div
-      className=" min-h-screen bg-black text-white bg-cover bg-center bg-no-repeat "
-      style={{
-        backgroundImage: `url(${backgroundImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
+    className="min-h-screen text-center lg:text-start text-white bg-cover bg-center bg-no-repeat"
+    style={{ backgroundImage: `url(${backgroundImage})` }}
     >
       <div className="w-[80%] mx-auto px-6 pt-32 md:pt-70 lg:pt-90 pb-20">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-24">
