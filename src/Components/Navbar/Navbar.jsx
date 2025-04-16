@@ -27,7 +27,7 @@ const Navbar = () => {
       <nav className="flex items-center justify-between pt-6 px-6 md:px-0 fixed top-0 left-0 w-full z-50">
         {/* Logo */}
         <div className="w-12 h-12 relative md:px-12 flex items-center justify-center">
-          <div className="absolute w-8 h-8 bg-black rounded-full flex items-center justify-center">
+          <div className="absolute w-8 h-8 rounded-full flex items-center justify-center">
             <img src={star} alt="logo" className="w-6 h-6" />
           </div>
         </div>
