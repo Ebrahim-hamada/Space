@@ -8,6 +8,7 @@ import moon from "../../assets/image/destination/image-moon.png";
 import mars from "../../assets/image/destination/image-mars.png";
 import europa from "../../assets/image/destination/image-europa.png";
 import titan from "../../assets/image/destination/image-titan.png";
+import PageTransition from "../PageTransition/PageTransition";
 
 const Destination = () => {
   const [activeDestination, setActiveDestination] = useState("MOON");
@@ -94,85 +95,87 @@ const Destination = () => {
   const currentDest = destinations[activeDestination];
 
   return (
-    <div
-      className="min-h-screen text-white bg-cover bg-center bg-no-repeat"
-      style={{
-        backgroundImage: `url(${backgroundImage})`,
-      }}
-      {...swipeHandlers}
-    >
-      <div className="container text-center lg:text-start mx-auto px-6 py-8 max-w-7xl min-h-screen flex flex-col">
-        <div className="mt-20">
-          <div className="flex text-center md:text-start items-center space-x-4">
-            <span className="text-[#4D4D56] font-bold text-2xl">01</span>
-            <h1 className="text-xl tracking-[1.75px] lg:text-xl lg:tracking-[4.75px] text-white">
-              PICK YOUR DESTINATION
-            </h1>
-          </div>
-        </div>
-
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-16 flex-grow mt-12">
-          <div className="flex justify-center">
-            <div
-              className={`transition-opacity duration-300 lg:pe-20 ${
-                fade ? "opacity-0" : "opacity-100"
-              }`}
-            >
-              <img
-                src={currentDest.image}
-                alt={currentDest.title}
-                className="w-[50%] mx-auto md:w-[70%] lg:w-full max-w-[445px] h-auto object-contain"
-              />
+    <PageTransition>
+      <div
+        className="min-h-screen text-white bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+        }}
+        {...swipeHandlers}
+      >
+        <div className="container text-center lg:text-start mx-auto px-6 py-8 max-w-7xl min-h-screen flex flex-col">
+          <div className="mt-20">
+            <div className="flex text-center md:text-start items-center space-x-4">
+              <span className="text-[#4D4D56] font-bold text-2xl">01</span>
+              <h1 className="text-xl tracking-[1.75px] lg:text-xl lg:tracking-[4.75px] text-white">
+                PICK YOUR DESTINATION
+              </h1>
             </div>
           </div>
 
-          <div className="max-w-[445px] text-white">
-            <div className="flex justify-center lg:justify-start space-x-8 mb-8">
-              {destinationKeys.map((dest) => (
-                <button
-                  key={dest}
-                  onClick={() => handleDestinationChange(dest)}
-                  className={`pb-2 text-base tracking-[2.7px] cursor-pointer whitespace-nowrap ${
-                    activeDestination === dest
-                      ? "text-white border-b-2 border-white"
-                      : "text-[#D0D6F9] border-b-2 border-transparent hover:border-gray-500"
-                  }`}
-                >
-                  {dest}
-                </button>
-              ))}
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-16 flex-grow mt-12">
+            <div className="flex justify-center">
+              <div
+                className={`transition-opacity duration-300 lg:pe-20 ${
+                  fade ? "opacity-0" : "opacity-100"
+                }`}
+              >
+                <img
+                  src={currentDest.image}
+                  alt={currentDest.title}
+                  className="w-[50%] mx-auto md:w-[70%] lg:w-full max-w-[445px] h-auto object-contain"
+                />
+              </div>
             </div>
 
-            <div
-              className={`transition-opacity duration-300 ${
-                fade ? "opacity-0" : "opacity-100"
-              }`}
-            >
-              <h2 className="text-[80px] md:text-[100px] font-normal leading-none mb-4">
-                {currentDest.title}
-              </h2>
+            <div className="max-w-[445px] text-white">
+              <div className="flex justify-center lg:justify-start space-x-8 mb-8">
+                {destinationKeys.map((dest) => (
+                  <button
+                    key={dest}
+                    onClick={() => handleDestinationChange(dest)}
+                    className={`pb-2 text-base tracking-[2.7px] cursor-pointer whitespace-nowrap ${
+                      activeDestination === dest
+                        ? "text-white border-b-2 border-white"
+                        : "text-[#D0D6F9] border-b-2 border-transparent hover:border-gray-500"
+                    }`}
+                  >
+                    {dest}
+                  </button>
+                ))}
+              </div>
 
-              <p className="text-[#D0D6F9] leading-relaxed mb-12 text-lg">
-                {currentDest.description}
-              </p>
+              <div
+                className={`transition-opacity duration-300 ${
+                  fade ? "opacity-0" : "opacity-100"
+                }`}
+              >
+                <h2 className="text-[80px] md:text-[100px] font-normal leading-none mb-4">
+                  {currentDest.title}
+                </h2>
 
-              <div className="pt-8 border-t border-[#383B4B]">
-                <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-8 sm:gap-16">
-                  <div>
-                    <span className="block text-[#D0D6F9] text-sm tracking-[2.35px] mb-3">
-                      AVG. DISTANCE
-                    </span>
-                    <span className="block text-2xl text-white">
-                      {currentDest.avgDistance}
-                    </span>
-                  </div>
-                  <div>
-                    <span className="block text-[#D0D6F9] text-sm tracking-[2.35px] mb-3">
-                      EST. TRAVEL TIME
-                    </span>
-                    <span className="block text-2xl text-white">
-                      {currentDest.estTravelTime}
-                    </span>
+                <p className="text-[#D0D6F9] leading-relaxed mb-12 text-lg">
+                  {currentDest.description}
+                </p>
+
+                <div className="pt-8 border-t border-[#383B4B]">
+                  <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-8 sm:gap-16">
+                    <div>
+                      <span className="block text-[#D0D6F9] text-sm tracking-[2.35px] mb-3">
+                        AVG. DISTANCE
+                      </span>
+                      <span className="block text-2xl text-white">
+                        {currentDest.avgDistance}
+                      </span>
+                    </div>
+                    <div>
+                      <span className="block text-[#D0D6F9] text-sm tracking-[2.35px] mb-3">
+                        EST. TRAVEL TIME
+                      </span>
+                      <span className="block text-2xl text-white">
+                        {currentDest.estTravelTime}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -180,7 +183,7 @@ const Destination = () => {
           </div>
         </div>
       </div>
-    </div>
+    </PageTransition>
   );
 };
 
