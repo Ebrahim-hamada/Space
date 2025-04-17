@@ -25,7 +25,7 @@ const Home = () => {
   return (
     <PageTransition>
       <div
-        className="min-h-screen text-center lg:text-start text-white bg-cover bg-center bg-no-repeat overflow-x-hidden"
+        className="min-h-screen text-center  lg:text-start text-white bg-cover bg-center bg-no-repeat overflow-x-hidden"
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
         <div className="w-[90%] mx-auto px-6 pt-32 md:pt-70 lg:pt-90 pb-20">
@@ -34,7 +34,7 @@ const Home = () => {
               <h2 className="text-lg md:text-xl uppercase tracking-widest text-blue-100 mb-4">
                 So, you want to travel to
               </h2>
-              <h1 className="text-7xl md:text-8xl lg:text-9xl text-white mb-6">
+              <h1 className="font-serif text-7xl md:text-8xl lg:text-9xl text-white mb-6">
                 SPACE
               </h1>
               <p className="w-[90%] mx-auto md:w-full text-base md:text-lg text-blue-100 leading-relaxed">
@@ -47,7 +47,7 @@ const Home = () => {
 
             <div className="flex justify-center lg:justify-end">
               <div className="relative group">
-                <button className="relative bg-white text-black font-serif text-xl px-10 py-10 rounded-full w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 flex items-center justify-center uppercase tracking-widest transition-all duration-300 hover:shadow-[0_0_0_45px_rgba(255,255,255,0.3)] lg:hover:shadow-[0_0_0_75px_rgba(255,255,255,0.3)]">
+                <button className="relative bg-white text-black text-xl px-10 py-10 font-serif rounded-full w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 flex items-center justify-center uppercase tracking-widest transition-all duration-300 hover:shadow-[0_0_0_45px_rgba(255,255,255,0.3)] lg:hover:shadow-[0_0_0_75px_rgba(255,255,255,0.3)]">
                   Explore
                 </button>
               </div>

@@ -138,10 +138,10 @@ const Crew = () => {
               <div className={`max-w-[500px] mx-auto lg:mx-0 mt-10 lg:mb-50 transition-all duration-700 ${
                 isAnimating ? "opacity-0 scale-95" : "opacity-100 scale-100"
               }`}>
-                <h2 className="text-gray-400 text-xl md:text-2xl mb-2">
+                <h2 className="text-gray-400 text-xl tracking-widest md:text-2xl mb-2">
                   {currentMember.role}
                 </h2>
-                <h3 className="text-4xl md:text-5xl font-bold mb-6">
+                <h3 className="text-4xl md:text-5xl font-serif mb-6">
                   {currentMember.name}
                 </h3>
                 <p className="text-blue-100  leading-relaxed">

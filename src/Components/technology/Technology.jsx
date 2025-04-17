@@ -102,7 +102,7 @@ const Technology = () => {
     <PageTransition>
       <div
         {...swipeHandlers}
-        className="min-h-screen text-center lg:text-start text-white bg-cover bg-center bg-no-repeat touch-pan-y"
+        className="min-h-screen text-center lg:text-start font text-white bg-cover bg-center bg-no-repeat touch-pan-y"
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
         <div className="lg:w-[80%] mx-auto py-8 max-w-7xl min-h-screen flex flex-col">
@@ -160,10 +160,10 @@ const Technology = () => {
                     fade ? "opacity-0 scale-95" : "opacity-100 scale-100"
                   }`}
                 >
-                  <h2 className="text-gray-400 text-sm lg:text-base tracking-widest mb-4">
+                  <h2 className="text-gray-400 text-2xl tracking-widest mb-4">
                     THE TERMINOLOGY...
                   </h2>
-                  <h3 className="text-3xl md:text-4xl lg:text-5xl font-light mb-6">
+                  <h3 className="text-3xl md:text-4xl lg:text-5xl font-serif mb-6">
                     {currentTech.name}
                   </h3>
                   <p className="text-blue-100 mb-12 leading-relaxed">

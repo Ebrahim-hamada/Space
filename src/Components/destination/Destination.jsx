@@ -149,7 +149,7 @@ const Destination = () => {
                   isAnimating ? "opacity-0 scale-95" : "opacity-100 scale-100"
                 }`}
               >
-                <h2 className="text-[80px]  md:text-[100px] font-normal leading-none mb-4">
+                <h2 className="text-[80px]  md:text-[100px] font-serif leading-none mb-4">
                   {currentDest.title}
                 </h2>
 
