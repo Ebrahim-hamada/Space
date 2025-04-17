@@ -133,28 +133,28 @@ const Crew = () => {
             </div>
 
             <div
-              className={`w-full lg:w-1/2 z-10 transition-all duration-700 ${
-                isAnimating ? "opacity-0 scale-95" : "opacity-100 scale-100"
-              }`}
+              className={`w-full lg:w-1/2 z-10`}
             >
-              <div className="max-w-[500px] mx-auto lg:mx-0 mt-10 lg:mb-50">
+              <div className={`max-w-[500px] mx-auto lg:mx-0 mt-10 lg:mb-50 transition-all duration-700 ${
+                isAnimating ? "opacity-0 scale-95" : "opacity-100 scale-100"
+              }`}>
                 <h2 className="text-gray-400 text-xl md:text-2xl mb-2">
                   {currentMember.role}
                 </h2>
                 <h3 className="text-4xl md:text-5xl font-bold mb-6">
                   {currentMember.name}
                 </h3>
-                <p className="text-blue-100 mb-12 leading-relaxed">
+                <p className="text-blue-100  leading-relaxed">
                   {currentMember.bio}
                 </p>
               </div>
 
-              <div className="flex space-x-8 justify-center lg:justify-start my-8 lg:my-0">
+              <div className="flex space-x-8 justify-center lg:justify-start my-8 lg:my-0 ">
                 {crewMembers.map((member, index) => (
                   <button
                     key={member.id}
                     onClick={() => handleChangeMember(index)}
-                    className={`w-3 h-3 rounded-full cursor-pointer transition-none ${
+                    className={`w-3 h-3 rounded-full cursor-pointer ${
                       activeCrewMember === index
                         ? "bg-white scale-110"
                         : "bg-gray-600 hover:bg-gray-400"
