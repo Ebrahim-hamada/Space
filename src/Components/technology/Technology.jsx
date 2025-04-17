@@ -117,24 +117,21 @@ const Technology = () => {
 
           <main className="flex-1 flex flex-col lg:flex-row-reverse items-center justify-between gap-8">
             <div
-              className={`w-full lg:w-[50%] order-first h-full flex items-center justify-center transition-opacity duration-300 ${
-                fade ? "opacity-0" : "opacity-100"
+              className={`w-full lg:w-[50%] order-first h-full flex items-center justify-center transition-all duration-700 ${
+                fade ? "opacity-0 scale-95" : "opacity-100 scale-100"
               }`}
             >
               <div className="relative w-full flex justify-center overflow-visible">
                 <img
                   src={currentTech.imageUrl}
                   alt={currentTech.name}
-                  className={`
-                  w-full 
-                  ${
-                    windowWidth <= 768
-                      ? "h-[300px] object-cover"
-                      : windowWidth <= 1024
-                      ? "h-[400px] object-cover object-bottom"
-                      : "h-[500px] object-contain lg:w-[80%]"
-                  }
-                `}
+                  className={`w-full 
+                  ${windowWidth <= 768
+                    ? "h-[300px] object-cover"
+                    : windowWidth <= 1024
+                    ? "h-[400px] object-cover object-bottom"
+                    : "h-[500px] object-contain lg:w-[80%]"
+                  }`}
                 />
               </div>
             </div>
@@ -146,7 +143,7 @@ const Technology = () => {
                     <button
                       key={tech.id}
                       onClick={() => handleChangeTechnology(index)}
-                      className={`w-12 h-12 lg:w-16 lg:h-16 rounded-full border flex items-center justify-center text-xl font-bold cursor-pointer transition-colors duration-200 ${
+                      className={`w-12 h-12 lg:w-16 lg:h-16 rounded-full border flex items-center justify-center text-xl font-bold cursor-pointer transition-all duration-700 ${
                         activeTechnology === index
                           ? "bg-white text-black border-white"
                           : "text-white border-white/25 hover:border-white"
@@ -159,8 +156,8 @@ const Technology = () => {
                 </div>
 
                 <div
-                  className={`max-w-[500px] mx-auto lg:mx-0 transition-opacity duration-300 mt-6 lg:mt-0 ${
-                    fade ? "opacity-0" : "opacity-100"
+                  className={`max-w-[500px] mx-auto lg:mx-0 transition-all duration-700 mt-6 lg:mt-0 ${
+                    fade ? "opacity-0 scale-95" : "opacity-100 scale-100"
                   }`}
                 >
                   <h2 className="text-gray-400 text-sm lg:text-base tracking-widest mb-4">
