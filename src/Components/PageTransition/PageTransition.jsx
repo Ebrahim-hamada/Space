@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 
-const SmoothTransition = ({ children }) => {
+const PageTransition = ({ children }) => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -13,4 +13,4 @@ const SmoothTransition = ({ children }) => {
   );
 };
 
-export default SmoothTransition;
+export default PageTransition;

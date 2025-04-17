@@ -7,7 +7,7 @@ import DOUGLAS from "../../assets/image/crew/image-douglas-hurley.png";
 import MARK from "../../assets/image/crew/image-mark-shuttleworth.png";
 import VICTOR from "../../assets/image/crew/image-victor-glover.png";
 import ANOUSHEH from "../../assets/image/crew/image-anousheh-ansari.png";
-import PageTransition from "../PageTransition/PageTransition";
+import PageTransition from './../PageTransition/PageTransition';
 
 const Crew = () => {
   const [activeCrewMember, setActiveCrewMember] = useState(0);

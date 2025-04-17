@@ -73,7 +73,7 @@ const Destination = () => {
     setTimeout(() => {
       setActiveDestination(dest);
       setFade(false);
-    }, 300);
+    }, 400);
   };
 
   const swipeHandlers = useSwipeable({
