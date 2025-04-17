@@ -12,7 +12,7 @@ import PageTransition from "./../PageTransition/PageTransition";
 const Crew = () => {
   const [activeCrewMember, setActiveCrewMember] = useState(0);
   const [backgroundImage, setBackgroundImage] = useState(desktopBackground);
-  const [fade, setFade] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -61,11 +61,11 @@ const Crew = () => {
   ];
 
   const handleChangeMember = (index) => {
-    if (index === activeCrewMember) return;
-    setFade(true);
+    if (index === activeCrewMember || isAnimating) return;
+    setIsAnimating(true);
     setTimeout(() => {
       setActiveCrewMember(index);
-      setFade(false);
+      setIsAnimating(false);
     }, 300);
   };
 
@@ -105,7 +105,7 @@ const Crew = () => {
           <main className="flex-1 flex flex-col lg:flex-row items-center lg:items-end justify-between gap-8 mt-10">
             <div
               className={`w-full lg:w-[35%] order-last h-full flex items-center justify-center transition-all duration-700 ${
-                fade ? "opacity-0" : "opacity-100"
+                isAnimating ? "opacity-0 scale-95" : "opacity-100 scale-100"
               }`}
             >
               <div className="relative w-full flex justify-center lg:justify-start max-h-[500px]">
@@ -134,7 +134,7 @@ const Crew = () => {
 
             <div
               className={`w-full lg:w-1/2 z-10 transition-all duration-700 ${
-                fade ? "opacity-0" : "opacity-100"
+                isAnimating ? "opacity-0 scale-95" : "opacity-100 scale-100"
               }`}
             >
               <div className="max-w-[500px] mx-auto lg:mx-0 mt-10 lg:mb-50">
