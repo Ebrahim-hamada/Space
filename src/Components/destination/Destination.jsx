@@ -145,7 +145,7 @@ const Destination = () => {
               </div>
 
               <div
-                className={`transition-all text-center duration-700 ease-in-out transform ${
+                className={`transition-all text-center md:text-start duration-700 ease-in-out transform ${
                   isAnimating ? "opacity-0 scale-95" : "opacity-100 scale-100"
                 }`}
               >
@@ -160,7 +160,7 @@ const Destination = () => {
                 <div className="pt-8 border-t border-[#383B4B]">
                   <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-8 sm:gap-16">
                     <div>
-                      <span className="block text-[#D0D6F9] text-sm tracking-[2.35px] mb-3">
+                      <span className="block text-[#D0D6F9] md:text-[12px] tracking-[2.35px] mb-3">
                         AVG. DISTANCE
                       </span>
                       <span className="block text-2xl text-white">
@@ -168,7 +168,7 @@ const Destination = () => {
                       </span>
                     </div>
                     <div>
-                      <span className="block text-[#D0D6F9] text-sm tracking-[2.35px] mb-3">
+                      <span className="block text-[#D0D6F9] md:text-[12px] tracking-[2.35px] mb-3">
                         EST. TRAVEL TIME
                       </span>
                       <span className="block text-2xl text-white">
