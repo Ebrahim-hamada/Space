@@ -102,12 +102,12 @@ const Destination = () => {
         }}
         {...swipeHandlers}
       >
-        <div className="container text-center lg:text-start mx-auto px-6 py-8 max-w-7xl min-h-screen flex flex-col">
+         <div className="container mx-auto px-6 py-8 max-w-7xl min-h-screen flex flex-col">
           <div className="mt-20">
-            <div className="flex text-center md:text-start items-center space-x-4">
+            <div className="flex justify-center lg:justify-start items-center space-x-4">
               <span className="text-[#4D4D56] font-bold text-2xl">01</span>
               <h1 className="text-xl tracking-[1.75px] lg:text-xl lg:tracking-[4.75px] text-white">
-                PICK YOUR DESTINATION
+              PICK YOUR DESTINATION
               </h1>
             </div>
           </div>
