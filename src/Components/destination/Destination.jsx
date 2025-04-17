@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useSwipeable } from "react-swipeable";
-import "./Destination.css";
 import desktopBackground from "../../assets/image/destination/background-destination-desktop.jpg";
 import tabletBackground from "../../assets/image/destination/background-destination-tablet.jpg";
 import mobileBackground from "../../assets/image/destination/background-destination-mobile.jpg";
@@ -13,7 +12,7 @@ import PageTransition from "../PageTransition/PageTransition";
 const Destination = () => {
   const [activeDestination, setActiveDestination] = useState("MOON");
   const [backgroundImage, setBackgroundImage] = useState(desktopBackground);
-  const [fade, setFade] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   const destinationKeys = ["MOON", "MARS", "EUROPA", "TITAN"];
 
@@ -68,12 +67,12 @@ const Destination = () => {
   };
 
   const handleDestinationChange = (dest) => {
-    if (dest === activeDestination) return;
-    setFade(true);
+    if (dest === activeDestination || isAnimating) return;
+    setIsAnimating(true);
     setTimeout(() => {
       setActiveDestination(dest);
-      setFade(false);
-    }, 400);
+      setIsAnimating(false);
+    }, 300);
   };
 
   const swipeHandlers = useSwipeable({
@@ -116,8 +115,8 @@ const Destination = () => {
           <div className="flex flex-col lg:flex-row items-center justify-center gap-16 flex-grow mt-12">
             <div className="flex justify-center">
               <div
-                className={`transition-opacity duration-300 lg:pe-20 ${
-                  fade ? "opacity-0" : "opacity-100"
+                className={`transition-all duration-700 ease-in-out transform lg:pe-20 ${
+                  isAnimating ? "opacity-0 scale-95" : "opacity-100 scale-100"
                 }`}
               >
                 <img
@@ -146,8 +145,8 @@ const Destination = () => {
               </div>
 
               <div
-                className={`transition-opacity duration-300 ${
-                  fade ? "opacity-0" : "opacity-100"
+                className={`transition-all duration-700 ease-in-out transform ${
+                  isAnimating ? "opacity-0 scale-95" : "opacity-100 scale-100"
                 }`}
               >
                 <h2 className="text-[80px] md:text-[100px] font-normal leading-none mb-4">
