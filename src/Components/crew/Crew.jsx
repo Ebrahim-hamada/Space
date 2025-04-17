@@ -7,7 +7,7 @@ import DOUGLAS from "../../assets/image/crew/image-douglas-hurley.png";
 import MARK from "../../assets/image/crew/image-mark-shuttleworth.png";
 import VICTOR from "../../assets/image/crew/image-victor-glover.png";
 import ANOUSHEH from "../../assets/image/crew/image-anousheh-ansari.png";
-import PageTransition from './../PageTransition/PageTransition';
+import PageTransition from "./../PageTransition/PageTransition";
 
 const Crew = () => {
   const [activeCrewMember, setActiveCrewMember] = useState(0);
@@ -40,7 +40,7 @@ const Crew = () => {
     {
       id: 1,
       role: "MISSION SPECIALIST",
-      name: "MARK SHUTTLEWORTH",
+      name: "MARK SHUTTLEWORTH ",
       bio: "Mark Richard Shuttleworth is the founder and CEO of Canonical, the company behind the Linux-based Ubuntu operating system. Shuttleworth became the first South African to travel to space as a space tourist.",
       imageUrl: MARK,
     },
@@ -69,7 +69,6 @@ const Crew = () => {
     }, 300);
   };
 
-  // swipe handlers
   const swipeHandlers = useSwipeable({
     onSwipedLeft: () => {
       const nextIndex = (activeCrewMember + 1) % crewMembers.length;
@@ -103,17 +102,17 @@ const Crew = () => {
             </div>
           </div>
 
-          <main className="flex-1 flex flex-col lg:flex-row items-center lg:items-end justify-between gap-8">
+          <main className="flex-1 flex flex-col lg:flex-row items-center lg:items-end justify-between gap-8 mt-10">
             <div
-              className={`w-full lg:w-[35%] order-last lg:order-last h-full flex items-center justify-center transition-opacity duration-300 ${
+              className={`w-full lg:w-[35%] order-last h-full flex items-center justify-center transition-all duration-700 ${
                 fade ? "opacity-0" : "opacity-100"
               }`}
             >
-              <div className="relative w-full h-full flex justify-center lg:justify-start lg:right-25 max-h-[900px]  overflow-visible">
+              <div className="relative w-full flex justify-center lg:justify-start max-h-[500px]">
                 <img
                   src={currentMember.imageUrl}
                   alt={currentMember.name}
-                  className="object-contain object-bottom h-full  w-full md:w-[50%] lg:w-[90%] floating-img"
+                  className="object-contain object-bottom h-auto max-h-[250px] md:max-h-[500px] lg:max-h-[620px] w-[60%] sm:w-[55%] md:w-[50%] lg:w-[100%] transition-all duration-700"
                   style={{
                     clipPath: "inset(0 0 -20% 0)",
                     transformOrigin: "bottom center",
@@ -133,12 +132,12 @@ const Crew = () => {
               </div>
             </div>
 
-            <div className="w-full lg:w-1/2 z-10">
-              <div
-                className={`max-w-[500px] mx-auto lg:mx-0 transition-opacity duration-300 mt-10 lg:mb-50 ${
-                  fade ? "opacity-0" : "opacity-100"
-                }`}
-              >
+            <div
+              className={`w-full lg:w-1/2 z-10 transition-all duration-700 ${
+                fade ? "opacity-0" : "opacity-100"
+              }`}
+            >
+              <div className="max-w-[500px] mx-auto lg:mx-0 mt-10 lg:mb-50">
                 <h2 className="text-gray-400 text-xl md:text-2xl mb-2">
                   {currentMember.role}
                 </h2>
@@ -150,13 +149,12 @@ const Crew = () => {
                 </p>
               </div>
 
-              {/* نقاط التحكم */}
               <div className="flex space-x-8 justify-center lg:justify-start my-8 lg:my-0">
                 {crewMembers.map((member, index) => (
                   <button
                     key={member.id}
                     onClick={() => handleChangeMember(index)}
-                    className={`w-3 h-3 rounded-full cursor-pointer transition-colors duration-200 ${
+                    className={`w-3 h-3 rounded-full cursor-pointer transition-none ${
                       activeCrewMember === index
                         ? "bg-white scale-110"
                         : "bg-gray-600 hover:bg-gray-400"
