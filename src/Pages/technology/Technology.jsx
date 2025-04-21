@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSwipeable } from "react-swipeable";
-import useResponsiveBackground from "../../hooks/useResponsiveBackground";
+import useResponsiveBackground from "../../hooks/UseResponsiveBackground";
 import usePageHeader from "../../hooks/usePageHeader";
 import desktopBackground from "../../assets/image/technology/background-technology-desktop.jpg";
 import tabletBackground from "../../assets/image/technology/background-technology-tablet.jpg";

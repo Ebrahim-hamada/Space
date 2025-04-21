@@ -1,5 +1,5 @@
 import { useState } from "react";
-import useResponsiveBackground from "../../hooks/useResponsiveBackground";
+import useResponsiveBackground from "../../hooks/UseResponsiveBackground";
 import useSwipeableNavigation from "../../hooks/useSwipeableNavigation";
 import usePageHeader from "../../hooks/usePageHeader";
 import desktopBackground from "../../assets/image/crew/background-crew-desktop.jpg";
