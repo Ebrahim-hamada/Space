@@ -1,4 +1,4 @@
-import useResponsiveBackground from "../../hooks/useResponsiveBackground";
+import useResponsiveBackground from "../../hooks/UseResponsiveBackground";
 import desktopBackground from "../../assets/image/home/background-home-desktop.jpg";
 import tabletBackground from "../../assets/image/home/background-home-tablet.jpg";
 import mobileBackground from "../../assets/image/home/background-home-mobile.jpg";
@@ -35,19 +35,15 @@ const Home = () => {
             </div>
 
             <div className="flex justify-center lg:justify-end">
-  <div className="relative group">
-    {/* الزرار */}
-    <button className="relative z-10 bg-white text-black text-xl px-10 py-10 rounded-full w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 flex items-center justify-center uppercase tracking-widest transition-all duration-300 hover:text-gray-400">
-      Explore
-    </button>
-
-    {/* الحلقة الشفافة */}
-    <div className="absolute inset-0 flex items-center justify-center">
-      <div className="rounded-full p-30 md:p-38 lg:p-45 bg-white opacity-0 transition-opacity duration-500 group-hover:opacity-10"></div>
-    </div>
-  </div>
-</div>
-
+              <div className="relative group">
+                <button className="relative z-10 bg-white text-black text-xl px-10 py-10 rounded-full w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 flex items-center justify-center uppercase tracking-widest transition-all duration-300 hover:text-gray-400">
+                  Explore
+                </button>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="rounded-full p-30 md:p-38 lg:p-45 bg-white opacity-0 transition-opacity duration-500 group-hover:opacity-10"></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
