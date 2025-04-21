@@ -6,13 +6,13 @@ import Crew from "./../../Pages/crew/Crew";
 import Technology from "./../../Pages/technology/Technology";
 import Error from "./../../Pages/Error/Error";
 
- const Router = () => {
-    const router = createBrowserRouter([
-        {
+const Router = () => {
+  const router = createBrowserRouter([
+    {
       path: "",
-      element: <Layout/>,
+      element: <Layout />,
       children: [
-        { index: true, element: <Home/> },
+        { index: true, element: <Home /> },
         { path: "/home", element: <Home /> },
         { path: "/destination", element: <Destination /> },
         { path: "/crew", element: <Crew /> },
@@ -21,11 +21,11 @@ import Error from "./../../Pages/Error/Error";
       ],
     },
   ]);
-  return(
+  return (
     <>
-          <RouterProvider router={router} />
+      <RouterProvider router={router} />
     </>
-  )
-}
+  );
+};
 
-export default Router
+export default Router;

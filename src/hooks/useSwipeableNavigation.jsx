@@ -1,7 +1,7 @@
 import { useSwipeable } from "react-swipeable";
 import { useState } from "react";
 
-export default function useSwipeableNavigation(items, activeIndex, setActiveIndex) {
+const useSwipeableNavigation = (items, activeIndex, setActiveIndex) => {
   const [isAnimating, setIsAnimating] = useState(false);
 
   const handleChange = (index) => {
@@ -27,4 +27,6 @@ export default function useSwipeableNavigation(items, activeIndex, setActiveInde
   });
 
   return { swipeHandlers, isAnimating, handleChange };
-}
+};
+
+export default useSwipeableNavigation;

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function useResponsiveBackground(desktop, tablet, mobile) {
+const useResponsiveBackground = (desktop, tablet, mobile) => {
   const [backgroundImage, setBackgroundImage] = useState(desktop);
 
   useEffect(() => {
@@ -20,4 +20,6 @@ export default function useResponsiveBackground(desktop, tablet, mobile) {
   }, [desktop, tablet, mobile]);
 
   return backgroundImage;
-}
+};
+
+export default useResponsiveBackground;

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSwipeable } from "react-swipeable";
 
-export default function useTechnologySwipe(items, activeIndex, onChange, windowWidth) {
+const useTechnologySwipe = (items, activeIndex, onChange, windowWidth) => {
   const [isAnimating, setIsAnimating] = useState(false);
 
   const handleChange = (index) => {
@@ -42,4 +42,6 @@ export default function useTechnologySwipe(items, activeIndex, onChange, windowW
   });
 
   return { swipeHandlers, isAnimating };
-}
+};
+
+export default useTechnologySwipe;
