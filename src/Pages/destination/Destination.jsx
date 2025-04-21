@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { useSwipeable } from "react-swipeable";
+import { useState } from "react";
+import useResponsiveBackground from "../../hooks/useResponsiveBackground";
+import useSwipeableNavigation from "../../hooks/useSwipeableNavigation";
+import usePageHeader from "../../hooks/usePageHeader";
 import desktopBackground from "../../assets/image/destination/background-destination-desktop.jpg";
 import tabletBackground from "../../assets/image/destination/background-destination-tablet.jpg";
 import mobileBackground from "../../assets/image/destination/background-destination-mobile.jpg";
@@ -7,29 +9,24 @@ import moon from "../../assets/image/destination/image-moon.png";
 import mars from "../../assets/image/destination/image-mars.png";
 import europa from "../../assets/image/destination/image-europa.png";
 import titan from "../../assets/image/destination/image-titan.png";
-import PageTransition from "../PageTransition/PageTransition";
+import PageTransition from "../../Components/PageTransition/PageTransition";
 
 const Destination = () => {
   const [activeDestination, setActiveDestination] = useState("MOON");
-  const [backgroundImage, setBackgroundImage] = useState(desktopBackground);
-  const [isAnimating, setIsAnimating] = useState(false);
+  const backgroundImage = useResponsiveBackground(
+    desktopBackground,
+    tabletBackground,
+    mobileBackground
+  );
 
   const destinationKeys = ["MOON", "MARS", "EUROPA", "TITAN"];
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth <= 768) {
-        setBackgroundImage(mobileBackground);
-      } else if (window.innerWidth <= 1024) {
-        setBackgroundImage(tabletBackground);
-      } else {
-        setBackgroundImage(desktopBackground);
-      }
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const activeIndex = destinationKeys.indexOf(activeDestination);
+  
+  const { swipeHandlers, isAnimating, handleChange } = useSwipeableNavigation(
+    destinationKeys,
+    activeIndex,
+    (index) => setActiveDestination(destinationKeys[index])
+  );
 
   const destinations = {
     MOON: {
@@ -66,53 +63,20 @@ const Destination = () => {
     },
   };
 
-  const handleDestinationChange = (dest) => {
-    if (dest === activeDestination || isAnimating) return;
-    setIsAnimating(true);
-    setTimeout(() => {
-      setActiveDestination(dest);
-      setIsAnimating(false);
-    }, 300);
-  };
-
-  const swipeHandlers = useSwipeable({
-    onSwipedLeft: () => {
-      const currentIndex = destinationKeys.indexOf(activeDestination);
-      const nextIndex = (currentIndex + 1) % destinationKeys.length;
-      handleDestinationChange(destinationKeys[nextIndex]);
-    },
-    onSwipedRight: () => {
-      const currentIndex = destinationKeys.indexOf(activeDestination);
-      const prevIndex =
-        (currentIndex - 1 + destinationKeys.length) % destinationKeys.length;
-      handleDestinationChange(destinationKeys[prevIndex]);
-    },
-    preventScrollOnSwipe: true,
-    trackMouse: true,
-  });
-
   const currentDest = destinations[activeDestination];
+  const header = usePageHeader("01", "PICK YOUR DESTINATION");
 
   return (
     <PageTransition>
       <div
-        className="min-h-screen text-white bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url(${backgroundImage})`,
-        }}
+        className="min-h-screen  text-white bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${backgroundImage})` }}
         {...swipeHandlers}
       >
-         <div className="container mx-auto px-6 py-8 max-w-7xl min-h-screen flex flex-col">
-          <div className="mt-20">
-            <div className="flex justify-center lg:justify-start items-center space-x-4">
-              <span className="text-[#4D4D56] font-bold text-2xl">01</span>
-              <h1 className="text-xl tracking-[1.75px] lg:text-xl lg:tracking-[4.75px] text-white">
-              PICK YOUR DESTINATION
-              </h1>
-            </div>
-          </div>
+        <div className="container mx-auto px-6 py-8 max-w-7xl min-h-screen flex flex-col">
+          {header}
 
-          <div className="flex flex-col lg:flex-row items-center justify-center gap-16 flex-grow mt-12">
+          <div className="flex flex-col lg:flex-row items-center justify-center cursor-pointer gap-16 flex-grow mt-12">
             <div className="flex justify-center">
               <div
                 className={`transition-all duration-700 ease-in-out transform lg:pe-20 ${
@@ -132,7 +96,7 @@ const Destination = () => {
                 {destinationKeys.map((dest) => (
                   <button
                     key={dest}
-                    onClick={() => handleDestinationChange(dest)}
+                    onClick={() => handleChange(destinationKeys.indexOf(dest))}
                     className={`pb-2 text-base tracking-[2.7px] cursor-pointer whitespace-nowrap ${
                       activeDestination === dest
                         ? "text-white border-b-2 border-white"
@@ -149,11 +113,11 @@ const Destination = () => {
                   isAnimating ? "opacity-0 scale-95" : "opacity-100 scale-100"
                 }`}
               >
-                <h2 className="text-[80px]  md:text-[100px] font-serif leading-none mb-4">
+                <h2 className="text-[80px] md:text-[100px] leading-none text-center lg:text-start mb-4">
                   {currentDest.title}
                 </h2>
 
-                <p className="text-[#D0D6F9] leading-relaxed mb-12 text-lg">
+                <p className="text-[#D0D6F9] text-center lg:text-start mb-12 text-lg">
                   {currentDest.description}
                 </p>
 
